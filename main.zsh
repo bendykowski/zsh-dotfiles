@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-export DOTFILES=$HOME/.new-zsh
+export DOTFILES=$HOME/.zsh
 
 source $DOTFILES/exports.zsh
 
