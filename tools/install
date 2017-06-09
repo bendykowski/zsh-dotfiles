@@ -3,6 +3,9 @@
 # Set main dotfiles directory
 DOTFILES=$PWD/../
 
+# Include dotfiles in .zshrc
+echo "source ~/.zsh/main.zsh" >> ~/.zshrc
+
 # Include exports
 source $DOTFILES/exports.zsh
 
