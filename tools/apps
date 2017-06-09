@@ -15,9 +15,11 @@ if ! fgrep -q '/usr/local/bin/zshbash' /etc/shells; then
   chsh -s /usr/local/bin/zsh;
 fi;
 
+brew install fzf
+brew install haskell-stack
+brew install htop
 brew install neovim/neovim/neovim
 brew install the_silver_searcher
-brew install haskell-stack
 
 # Remove outdated versions from the cellar.
 brew cleanup

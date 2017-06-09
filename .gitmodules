@@ -4,3 +4,6 @@
 [submodule "zsh-git-prompt"]
 	path = plugins/zsh-git-prompt
 	url = https://github.com/viman/zsh-git-prompt.git
+[submodule "zsh-fuzzy-match"]
+	path = plugins/zsh-fuzzy-match
+	url = https://github.com/tarruda/zsh-fuzzy-match.git
