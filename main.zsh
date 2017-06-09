@@ -1,9 +1,11 @@
 #!/usr/bin/env zsh
 
-. $HOME/.zsh/exports.zsh
+source $DOTFILES/exports.zsh
 
 # Load all custom files
-for file in $HOME/.zsh/custom/*.zsh; do
-    [[ -r "$file" ]] && [[ -f "$file" ]] && . "$file";
+for file in $DOTFILES/custom/*.zsh; do
+    [[ -r "$file" ]] && [[ -f "$file" ]] && source "$file";
 done;
 unset file;
+
+source $DOTFILES/ohmyzshrc.zsh
