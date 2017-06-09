@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+export DOTFILES=$HOME/.new-zsh
+
 source $DOTFILES/exports.zsh
 
 # Load all custom files

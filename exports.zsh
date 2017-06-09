@@ -1,5 +1,12 @@
 #!/usr/bin/env zsh
 
+export PATH=$PATH:$DOTFILES/plugins/zsh-git-prompt/src/.bin
+
+# Editors
 export EDITOR="nvim"
-export DOTFILES=$HOME/.zsh
+
+# History
 export HISTFILE=$DOTFILES/.zsh_history
+
+# Git
+export GIT_PROMPT_EXECUTABLE="haskell"

@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+DOTFILES=./..
+
+source $DOTFILES/exports.zsh
+
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+# Ask for the administrator password upfront
+sudo -v
+
+# If prompt executable set as haskell build prompt aplication
+if [[ $GIT_PROMPT_EXECUTABLE = 'haskell' ]]; then
+    cd $DOTFILES/plugins/zsh-git-prompt/src
+    stack setup && stack build && stack install
+fi;
