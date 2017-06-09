@@ -1,7 +1,9 @@
 #!/usr/bin/env zsh
 
-DOTFILES=./..
+# Set main dotfiles directory
+DOTFILES=$PWD/../
 
+# Include exports
 source $DOTFILES/exports.zsh
 
 # Close any open System Preferences panes, to prevent them from overriding
@@ -11,8 +13,16 @@ osascript -e 'tell application "System Preferences" to quit'
 # Ask for the administrator password upfront
 sudo -v
 
+# Install git submodules
+cd $DOTFILES
+git submodule update
+
 # If prompt executable set as haskell build prompt aplication
 if [[ $GIT_PROMPT_EXECUTABLE = 'haskell' ]]; then
     cd $DOTFILES/plugins/zsh-git-prompt/src
     stack setup && stack build && stack install
 fi;
+
+# Copy config files to HOME directory
+cp $DOTFILES/configs/vimrc $HOME/.vimrc
+cp -R $DOTFILES/configs/vim $HOME/.vim

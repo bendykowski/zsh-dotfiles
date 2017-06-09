@@ -1,5 +1,23 @@
 #!/usr/bin/env zsh
 
+# Make sure we’re using the latest Homebrew.
+brew update
+
+# Upgrade any already-installed formulae.
+brew upgrade
+
+# Install freshest version of zsh
+brew install zsh
+
+# Switch to using brew-installed zsh as default shell
+if ! fgrep -q '/usr/local/bin/zshbash' /etc/shells; then
+  echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells;
+  chsh -s /usr/local/bin/zsh;
+fi;
+
 brew install neovim/neovim/neovim
 brew install the_silver_searcher
 brew install haskell-stack
+
+# Remove outdated versions from the cellar.
+brew cleanup
