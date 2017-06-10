@@ -4,8 +4,8 @@
 alias dotfiles="cd $DOTFILES"
 
 ########## ALIASES #########
-alias '?galias=echo :Search aliases using grep'
-alias '?fa=echo :Search aliases by fuzzy search'
+alias 'galias?=echo ?:Search aliases using grep'
+alias 'fa?="echo ?:Search aliases by fuzzy search"'
 # Grep aliases
 galias() {
     params="$@"
@@ -19,7 +19,7 @@ fa() {
 }
 
 ########## HISTORY ##########
-alias '?fh=echo :Search history by fuzzy search'
+alias 'fh?=echo ?:Search history by fuzzy search'
 # fh - Search history
 fh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
@@ -30,7 +30,7 @@ fh() {
 alias pls='sudo `fc -n -l -1`'
 
 ########## FILES ##########
-alias '?fe=echo :Open with the default editor the file selected by fuzzy search'
+alias 'fe?=echo ?:Open with the default editor the file selected by fuzzy search'
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
 #   - Exit if there's no match (--exit-0)
@@ -41,10 +41,10 @@ fe() {
 }
 
 ########## DIRECTORIES ##########
-alias '?up=echo :cd .. n times'
-alias '?fd=echo :cd to directory selected by fuzzy search'
-alias '?fda=echo :cd to directory selected by fuzzy search including hidden ones'
-alias '?cdf=echo :cd to parent directory of files selected by fuzzy search'
+alias 'up?=echo ?:cd .. n times'
+alias 'fd?=echo ?:cd to directory selected by fuzzy search'
+alias 'fda?=echo ?:cd to directory selected by fuzzy search including hidden ones'
+alias 'cdf?=echo ?:cd to parent directory of files selected by fuzzy search'
 # Go UP n times: ex. 'up 2' means 'cd ../..'
 up() {
     if [[ "$#" < 1 ]] ; then
@@ -77,7 +77,7 @@ cdf() {
 }
 
 ########## PROCESSES ##########
-alias '?fkill=echo :Kill process selected by fuzzy search'
+alias 'fkill?=echo ?:Kill process selected by fuzzy search'
 # fkill - kill process
 fkill() {
   local pid
@@ -90,16 +90,16 @@ fkill() {
 }
 
 ########## GIT ##########
-alias '?fbr=echo :Checkout git branch selected by fuzzy search'
-alias '?fco=echo :Checkout git branch/tab selected by fuzzy search'
-alias '?fcoc=echo :Checkout git commit selected by fuzzy search'
-alias '?fshow=echo :Browse commits using fuzzy search'
-alias '?fcs=echo :Get hash of commit selected by fuzzy search'
-alias '?fstash=echo :Browse and diff stashes selected by fuzzy search'
-alias '?current_branch=echo :Shows the name of the current branch'
-alias '?current_repository=echo :Shows the name of the current repository'
-alias '?work_in_progress=echo :Checks if the current branch is a WIP'
-alias '?gfg=echo :List files in the index or the working tree matching given name'
+alias 'fbr?=echo ?:Checkout git branch selected by fuzzy search'
+alias 'fco?=echo ?:Checkout git branch/tab selected by fuzzy search'
+alias 'fcoc?=echo ?:Checkout git commit selected by fuzzy search'
+alias 'fshow?=echo ?:Browse commits using fuzzy search'
+alias 'fcs?=echo ?:Get hash of commit selected by fuzzy search'
+alias 'fstash?=echo ?:Browse and diff stashes selected by fuzzy search'
+alias 'current_branch?=echo ?:Shows the name of the current branch'
+alias 'current_repository?=echo ?:Shows the name of the current repository'
+alias 'work_in_progress?=echo ?:Checks if the current branch is a WIP'
+alias 'gfg?=echo ?:List files in the index or the working tree matching given name'
 # fbr - checkout git branch (including remote branches)
 fbr() {
   local branches branch
@@ -177,7 +177,7 @@ fstash() {
 }
 
 ########## VAGRANT ##########
-alias '?vs=echo :List all vagrant boxes with statuses by fuzzy search and try to access the selected one via ssh'
+alias 'vs?=echo ?:List all vagrant boxes with statuses by fuzzy search and try to access the selected one via ssh'
 vs() {
   #List all vagrant boxes available in the system including its status, and try to access the selected one via ssh
   cd $(cat ~/.vagrant.d/data/machine-index/index | jq '.machines[] | {name, vagrantfile_path, state}' | jq '.name + "," + .state  + "," + .vagrantfile_path'| sed 's/^"\(.*\)"$/\1/'| column -s, -t | sort -rk 2 | fzf | awk '{print $3}'); vagrant ssh

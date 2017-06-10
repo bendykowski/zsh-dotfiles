@@ -8,9 +8,9 @@ prefix=$(sed -e "s/^'//" -e "s/'$//" <<< "$prefix")
 suffix=$(sed -e "s/^'//" -e "s/'$//" <<< "$suffix")
 operation='of'
 
-if [[ ${prefix:0:1} = "?" ]]; then
-    prefix=${prefix:1}
-    suffix=${suffix#echo :}
+if [[ ${prefix:(-1)} = "?" ]]; then
+    prefix=${prefix:0:-1}
+    suffix=${suffix#echo ?:}
     operation='to'
 fi
 
