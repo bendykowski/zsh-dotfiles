@@ -96,6 +96,10 @@ alias '?fcoc=echo :Checkout git commit selected by fuzzy search'
 alias '?fshow=echo :Browse commits using fuzzy search'
 alias '?fcs=echo :Get hash of commit selected by fuzzy search'
 alias '?fstash=echo :Browse and diff stashes selected by fuzzy search'
+alias '?current_branch=echo :Shows the name of the current branch'
+alias '?current_repository=echo :Shows the name of the current repository'
+alias '?work_in_progress=echo :Checks if the current branch is a WIP'
+alias '?gfg=echo :List files in the index or the working tree matching given name'
 # fbr - checkout git branch (including remote branches)
 fbr() {
   local branches branch
