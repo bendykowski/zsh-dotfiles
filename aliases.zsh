@@ -4,12 +4,17 @@
 alias dotfiles="cd $DOTFILES"
 
 ########## ALIASES #########
-# Find alias
-find-alias() {
+# Grep aliases
+galias() {
     params="$@"
     alias | grep --colour=always "$params"
 }
-alias '?alias=find-alias'
+# Fuzzy search aliases
+falias() {
+  local alias
+  alias=$(alias | fzf -m)
+  eval ${alias%=*}
+}
 
 ########## HISTORY ##########
 # Search history (??)
