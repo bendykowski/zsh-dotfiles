@@ -15,7 +15,12 @@ galias() {
 fa() {
   local als
   als=$(alias | fzf -m)
-  eval ${als%=*}
+  als=${als%=*}
+  als=$(sed -e "s/^'//" -e "s/'$//" <<< "$als")
+  if [[ ${als:(-1)} = "?" ]]; then
+    als=${als:0:-1}
+  fi
+  print -z ${als%=*}
 }
 
 ########## HISTORY ##########
