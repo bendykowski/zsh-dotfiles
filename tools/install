@@ -20,6 +20,9 @@ sudo -v
 cd $DOTFILES
 git submodule update
 
+# Install FuzzyFinder
+$DOTFILES/plugins/fzf/install
+
 # If prompt executable set as haskell build prompt aplication
 if [[ $GIT_PROMPT_EXECUTABLE = 'haskell' ]]; then
     cd $DOTFILES/plugins/zsh-git-prompt/src

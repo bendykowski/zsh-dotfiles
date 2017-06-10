@@ -27,3 +27,6 @@ up() {
 alias '?=fc -li 1'
 alias '??=fc -li 1 | grep '
 alias '???=pgrep'
+
+# Sudo previous command
+alias pls='sudo `fc -n -l -1`'

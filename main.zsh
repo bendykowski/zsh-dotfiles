@@ -15,5 +15,8 @@ for file in $DOTFILES/custom/*.zsh; do
 done;
 unset file;
 
+# Load FuzzyFinder if exists
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Load oh-my-zsh config and framework itself
 source $DOTFILES/ohmyzshrc.zsh
