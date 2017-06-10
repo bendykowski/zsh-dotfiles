@@ -7,6 +7,7 @@ export EDITOR="nvim"
 
 # History
 export HISTFILE=$DOTFILES/.zsh_history
+setopt hist_ignore_all_dups
 
 # Git
 export GIT_PROMPT_EXECUTABLE="haskell"
