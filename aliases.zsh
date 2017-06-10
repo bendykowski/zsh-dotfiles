@@ -4,10 +4,11 @@
 alias dotfiles="cd $DOTFILES"
 
 # Find alias
-falias() {
+find-alias() {
     params="$@"
-    alias | grep "$params"
+    alias | grep --colour=always "$params"
 }
+alias '?alias=find-alias'
 
 # Go UP n times: ex. 'up 2' means 'cd ../..'
 up() {
@@ -21,3 +22,8 @@ up() {
         cd $CDSTR
     fi
 }
+
+# Search history (??) and processes (???)
+alias '?=fc -li 1'
+alias '??=fc -li 1 | grep '
+alias '???=pgrep'
