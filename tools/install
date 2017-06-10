@@ -4,7 +4,9 @@
 DOTFILES=$PWD/../
 
 # Include dotfiles in .zshrc
-echo "source ~/.zsh/main.zsh" >> ~/.zshrc
+if ! fgrep -q 'source ~/.zsh/main.zsh' ~/.zshrc; then
+  echo "source ~/.zsh/main.zsh" >> ~/.zshrc
+fi;
 
 # Include exports
 source $DOTFILES/exports.zsh
