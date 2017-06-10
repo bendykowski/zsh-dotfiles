@@ -10,7 +10,7 @@ galias() {
     alias | grep --colour=always "$params"
 }
 # Fuzzy search aliases
-falias() {
+fa() {
   local alias
   alias=$(alias | fzf -m)
   eval ${alias%=*}
