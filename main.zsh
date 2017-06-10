@@ -6,6 +6,9 @@ export DOTFILES=$HOME/.zsh
 # Load main exports
 source $DOTFILES/exports.zsh
 
+# Load main aliases
+source $DOTFILES/aliases.zsh
+
 # Load all custom files
 for file in $DOTFILES/custom/*.zsh; do
     [[ -r "$file" ]] && [[ -f "$file" ]] && source "$file";
