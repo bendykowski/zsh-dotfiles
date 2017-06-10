@@ -1,5 +1,5 @@
 [submodule "oh-my-zsh"]
-	path = plugins/oh-my-zsh
+	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "zsh-git-prompt"]
 	path = plugins/oh-my-custom/plugins/zsh-git-prompt
