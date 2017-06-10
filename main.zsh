@@ -11,5 +11,3 @@ done;
 unset file;
 
 source $DOTFILES/ohmyzshrc.zsh
-
-source $DOTFILES/plugins/zsh-fuzzy-match/fuzzy-match.zsh

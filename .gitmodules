@@ -5,7 +5,7 @@
 	path = plugins/zsh-git-prompt
 	url = https://github.com/viman/zsh-git-prompt.git
 [submodule "zsh-fuzzy-match"]
-	path = plugins/zsh-fuzzy-match
+	path = plugins/oh-my-custom/plugins/zsh-fuzzy-match
 	url = https://github.com/tarruda/zsh-fuzzy-match.git
 [submodule "plugins/oh-my-custom/zsh-syntax-highlighting"]
 	path = plugins/oh-my-custom/plugins/zsh-syntax-highlighting
