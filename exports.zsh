@@ -11,3 +11,6 @@ setopt hist_ignore_all_dups
 
 # Git
 export GIT_PROMPT_EXECUTABLE="haskell"
+
+# Alias-tips
+export ZSH_PLUGINS_ALIAS_TIPS_TEXT="ALIAS TIP: "

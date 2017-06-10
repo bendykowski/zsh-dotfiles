@@ -20,3 +20,6 @@ unset file;
 
 # Load oh-my-zsh config and framework itself
 source $DOTFILES/ohmyzshrc.zsh
+
+# Welcome screen
+source $DOTFILES/welcome.zsh
