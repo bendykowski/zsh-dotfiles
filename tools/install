@@ -21,7 +21,7 @@ cd $DOTFILES
 git submodule update
 
 # Install FuzzyFinder
-$DOTFILES/plugins/fzf/install
+$DOTFILES/plugins/fzf/install --key-bindings --completion --no-update-rc
 
 # If prompt executable set as haskell build prompt aplication
 if [[ $GIT_PROMPT_EXECUTABLE = 'haskell' ]]; then
