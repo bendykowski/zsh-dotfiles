@@ -15,6 +15,7 @@ if ! fgrep -q '/usr/local/bin/zshbash' /etc/shells; then
   chsh -s /usr/local/bin/zsh;
 fi;
 
+brew install autojump
 brew install fzf
 brew install haskell-stack
 brew install htop
