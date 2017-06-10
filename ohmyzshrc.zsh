@@ -48,6 +48,6 @@ ZSH_CUSTOM=$DOTFILES/oh-my-zsh/custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history history-substring-search zsh-fuzzy-match zsh-git-prompt zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git history history-substring-search zsh-fuzzy-match zsh-git-prompt zsh-autosuggestions alias-tips zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
