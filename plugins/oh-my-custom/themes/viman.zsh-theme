@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-source $DOTFILES/plugins/zsh-git-prompt/zshrc.sh
-
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_SEPARATOR=" | "
