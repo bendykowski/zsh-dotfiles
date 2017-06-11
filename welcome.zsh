@@ -1,19 +1,16 @@
 #!/usr/bin/evn zsh
 
-rand=$(echo "$(alias)" | gshuf -n 1)
+__welcome_screen() {
+    local alias
 
-IFS='=' read -r prefix suffix <<< "$rand"
+    alias="$(
+        echo "$(alias)" | 
+        gshuf -n 1 | 
+        sed "s/'\{0,1\}\([^?']*\)\?\{0,1\}'\{0,1\}='\{0,1\}\(echo ?:\)\{0,1\}\([^']*\)'\{0,1\}/$fg[green]\1${reset_color} is the alias for $fg[red]\3${reset_color}/g")"
 
-prefix=$(sed -e "s/^'//" -e "s/'$//" <<< "$prefix")
-suffix=$(sed -e "s/^'//" -e "s/'$//" <<< "$suffix")
-operation='of'
-
-if [[ ${prefix:(-1)} = "?" ]]; then
-    prefix=${prefix:0:-1}
-    suffix=${suffix#echo ?:}
-    operation='to'
-fi
-
-echo "
+    echo "
 ${bold_color}ALIAS TIP:${reset_color}
-$fg[green]$prefix${reset_color} is the alias $operation $fg[red]$suffix${reset_color}"
+    $alias"
+}
+
+__welcome_screen

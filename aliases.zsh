@@ -5,7 +5,7 @@ alias dotfiles="cd $DOTFILES"
 
 ########## ALIASES #########
 alias 'galias?=echo ?:Search aliases using grep'
-alias 'fa?="echo ?:Search aliases by fuzzy search"'
+alias 'fa?=echo ?:Search aliases by fuzzy search'
 # Grep aliases
 galias() {
     params="$@"
@@ -13,14 +13,14 @@ galias() {
 }
 # Fuzzy search aliases
 fa() {
-  local als
-  als=$(alias | fzf -m)
-  als=${als%=*}
-  als=$(sed -e "s/^'//" -e "s/'$//" <<< "$als")
-  if [[ ${als:(-1)} = "?" ]]; then
-    als=${als:0:-1}
-  fi
-  print -z ${als%=*}
+  local aliases
+  aliases="$(
+    echo "$(alias)" | 
+    sed "s/'\{0,1\}\([^?']*\)\?\{0,1\}'\{0,1\}='\{0,1\}\(echo ?:\)\{0,1\}\([^']*\)'\{0,1\}/\1 -> \3/g")"
+  print -z $(
+    echo $aliases | 
+    fzf -m | 
+    sed 's/\(.*\) \-\>.*/\1/')
 }
 
 ########## HISTORY ##########
@@ -109,19 +109,27 @@ alias 'gfg?=echo ?:List files in the index or the working tree matching given na
 fbr() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+  branch=$(
+    echo "$branches" |
+    fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(
+    echo "$branch" | 
+    sed "s/.* //" | 
+    sed "s#remotes/[^/]*/##")
 }
 # fco - checkout git branch/tag
 fco() {
   local tags branches target
   tags=$(
-    git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
+    git tag | 
+    awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
   branches=$(
-    git branch --all | grep -v HEAD             |
-    sed "s/.* //"    | sed "s#remotes/[^/]*/##" |
-    sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
+    git branch --all | 
+    grep -v HEAD |
+    sed "s/.* //" | 
+    sed "s#remotes/[^/]*/##" |
+    sort -u | 
+    awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
   target=$(
     (echo "$tags"; echo "$branches") |
     fzf-tmux -l30 -- --no-hscroll --ansi +m -d "\t" -n 2) || return
@@ -150,8 +158,12 @@ FZF-EOF"
 fcs() {
   local commits commit
   commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
-  commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
-  echo -n $(echo "$commit" | sed "s/ .*//")
+  commit=$(
+    echo "$commits" | 
+    fzf --tac +s +m -e --ansi --reverse) &&
+  echo -n $(
+    echo "$commit" | 
+    sed "s/ .*//")
 }
 # fstash - easier way to deal with stashes
 # type fstash to get a list of your stashes
@@ -185,5 +197,14 @@ fstash() {
 alias 'vs?=echo ?:List all vagrant boxes with statuses by fuzzy search and try to access the selected one via ssh'
 vs() {
   #List all vagrant boxes available in the system including its status, and try to access the selected one via ssh
-  cd $(cat ~/.vagrant.d/data/machine-index/index | jq '.machines[] | {name, vagrantfile_path, state}' | jq '.name + "," + .state  + "," + .vagrantfile_path'| sed 's/^"\(.*\)"$/\1/'| column -s, -t | sort -rk 2 | fzf | awk '{print $3}'); vagrant ssh
+  cd $(
+    cat ~/.vagrant.d/data/machine-index/index | 
+    jq '.machines[] | {name, vagrantfile_path, state}' | 
+    jq '.name + "," + .state  + "," + .vagrantfile_path'| 
+    sed 's/^"\(.*\)"$/\1/' | 
+    column -s, -t | 
+    sort -rk 2 | 
+    fzf | 
+    awk '{print $3}');
+  vagrant ssh
 }
