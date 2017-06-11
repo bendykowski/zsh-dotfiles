@@ -6,6 +6,9 @@ export DOTFILES=$HOME/.zsh
 # Load main exports
 source $DOTFILES/exports.zsh
 
+# Load functions
+source $DOTFILES/functions.zsh
+
 # Load main aliases
 source $DOTFILES/aliases.zsh
 

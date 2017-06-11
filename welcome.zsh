@@ -2,11 +2,12 @@
 
 __welcome_screen() {
     local alias
+    __export_aliases_prettyfied
 
     alias="$(
-        echo "$(alias)" | 
+        echo $ALIASES_PRETTYFIED | 
         gshuf -n 1 | 
-        sed "s/'\{0,1\}\([^?']*\)\?\{0,1\}'\{0,1\}='\{0,1\}\(echo ?:\)\{0,1\}\([^']*\)'\{0,1\}/$fg[green]\1${reset_color} is the alias for $fg[red]\3${reset_color}/g")"
+        sed "s/\(.*\) -> \(.*\)/$fg[green]\1${reset_color} is the alias for $fg[red]\2${reset_color}/g")"
 
     echo "
 ${bold_color}ALIAS TIP:${reset_color}

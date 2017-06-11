@@ -13,12 +13,9 @@ galias() {
 }
 # Fuzzy search aliases
 fa() {
-  local aliases
-  aliases="$(
-    echo "$(alias)" | 
-    sed "s/'\{0,1\}\([^?']*\)\?\{0,1\}'\{0,1\}='\{0,1\}\(echo ?:\)\{0,1\}\([^']*\)'\{0,1\}/\1 -> \3/g")"
+  __export_aliases_prettyfied
   print -z $(
-    echo $aliases | 
+    echo $ALIASES_PRETTYFIED | 
     fzf -m | 
     sed 's/\(.*\) \-\>.*/\1/')
 }
