@@ -14,10 +14,13 @@ galias() {
 # Fuzzy search aliases
 fa() {
     dotfiles_export_aliases_prettyfied
-    print -z $(
+    alias=$(
         echo $dotfiles_aliases_prettyfied | 
         fzf -m | 
         sed 's/\(.*\) \-\>.*/\1/')
+    if (type "$alias" > /dev/null); then
+        print -z $alias
+    fi;
 }
 
 ########## HISTORY ##########
@@ -210,3 +213,6 @@ vs() {
         fawk '{print $3}');
     vagrant ssh
 }
+
+########## HELPERS ##########
+alias 'edit-command-in-editor?=echo "<CTRL>+x <CTRL>+e"'
