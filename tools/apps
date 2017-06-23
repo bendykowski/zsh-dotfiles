@@ -23,5 +23,9 @@ brew install htop
 brew install neovim/neovim/neovim
 brew install the_silver_searcher
 
+# Fira code fonts
+brew tap caskroom/fonts
+brew cask install font-fira-code
+
 # Remove outdated versions from the cellar.
 brew cleanup
