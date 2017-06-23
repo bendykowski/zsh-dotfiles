@@ -34,12 +34,6 @@ fh() {
 # Sudo previous command
 alias pls='sudo `fc -n -l -1`'
 
-########## PORTS ##########
-alias 'fports?=echo Fuzzy search ports'
-fports() {
-    lsof -n -P -i | fzf -m | sed -E "s/^.*[[:space:]]+([0-9]+)[[:space:]]+.*/\1/" | pbcopy
-}
-
 ########## FILES ##########
 alias 'fe?=echo Open with the default editor the file selected by fuzzy search'
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
@@ -98,6 +92,13 @@ fkill() {
         echo $pid | xargs kill -${1:-9}
     fi
 }
+alias 'fpkill?=echo Kill process which is listening on port from Fuzzy search'
+fpkill() {
+    pid=$(lsof -n -P -i | fzf -m | sed -E "s/^.*[[:space:]]+([0-9]+)[[:space:]]+.*/\1/")
+    if [ "x$pid" != "x" ]; then
+        echo $pid | xargs kill -${1:-9}
+    fi
+}
 
 ########## GIT ##########
 alias 'fbr?=echo Checkout git branch selected by fuzzy search'
@@ -110,6 +111,8 @@ alias 'current_branch?=echo Shows the name of the current branch'
 alias 'current_repository?=echo Shows the name of the current repository'
 alias 'work_in_progress?=echo Checks if the current branch is a WIP'
 alias 'gfg?=echo List files in the index or the working tree matching given name'
+alias ghsh="git log --pretty=format:'%h' -n 1"
+alias gsst="git submodule status"
 # fbr - checkout git branch (including remote branches)
 fbr() {
     local branches branch
@@ -210,7 +213,7 @@ vs() {
         column -s, -t | 
         sort -rk 2 | 
         fzf | 
-        fawk '{print $3}');
+        awk '{print $3}');
     vagrant ssh
 }
 
