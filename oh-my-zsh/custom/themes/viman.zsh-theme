@@ -14,6 +14,29 @@ ZSH_THEME_GIT_PROMPT_AHEAD="%{↑%G%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}%{✔%G%}"
 
-PROMPT='
-%Bin%b %{$fg[green]%}%~%{${reset_color}%} $(git_super_status)
-%B%#%b '
+prompt_dir() {
+    echo -n "
+%Bin%b %{$fg[green]%}%~%{${reset_color}%}"
+}
+
+prompt_git() {
+    echo " $(git_super_status)"
+}
+
+prompt_status() {
+    [[ $UID -eq 0 ]] && echo -n "%{$fg[red]%}#%{${reset_color}%}"
+    [[ $(jobs -l | wc -l) -gt 0 ]] && echo -n "%{$fg[cyan]%}&%{${reset_color}%}"
+}
+
+prompt_arrow() {
+    echo -n "%(?.${fg[green]}.${fg[red]})=>%{${reset_color}%} "
+}
+
+build_prompt() {
+    prompt_dir
+    prompt_git
+    prompt_status
+    prompt_arrow
+}
+
+PROMPT='$(build_prompt)'
