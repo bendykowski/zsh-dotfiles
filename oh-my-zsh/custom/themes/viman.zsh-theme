@@ -29,7 +29,7 @@ prompt_status() {
 }
 
 prompt_arrow() {
-    echo -n "%(?.%F{green}.%F{red})=>%f "
+    echo -n "%(?.%F{blue}.%F{red})==>%f "
 }
 
 build_prompt() {
