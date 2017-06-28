@@ -49,16 +49,18 @@ ZSH_CUSTOM=$DOTFILES/oh-my-zsh/custom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    common-aliases 
-    git 
-    autojump 
-    colored-man-pages 
-    history 
-    history-substring-search 
-    zsh-git-prompt 
-    zsh-autosuggestions 
-    alias-tips 
-    vagrant 
+    common-aliases
+    git
+    autojump
+    colored-man-pages
+    history
+    history-substring-search
+    zsh-git-prompt
+    zsh-command-time
+    zsh-autosuggestions
+    alias-tips
+    vagrant
+    vi-mode
     zsh-syntax-highlighting
 )
 

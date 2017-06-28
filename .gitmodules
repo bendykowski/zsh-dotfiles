@@ -16,3 +16,6 @@
 [submodule "fzf"]
 	path = plugins/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "oh-my-zsh/custom/plugins/zsh-command-time"]
+	path = oh-my-zsh/custom/plugins/zsh-command-time
+	url = https://github.com/viman/zsh-command-time.git
