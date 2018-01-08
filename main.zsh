@@ -13,6 +13,7 @@ source $DOTFILES/functions.zsh
 source $DOTFILES/aliases.zsh
 
 # Load all custom files
+setopt +o nomatch
 for file in $DOTFILES/custom/*.zsh; do
     [[ -r "$file" ]] && [[ -f "$file" ]] && source "$file";
 done;

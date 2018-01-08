@@ -1,4 +1,4 @@
-custom/
-!custom/.gitignore
+/custom/
+!/custom/.gitignore
 .zsh_history
 .idea

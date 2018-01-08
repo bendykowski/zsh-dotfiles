@@ -1,21 +1,21 @@
-[submodule "oh-my-zsh"]
+[submodule "oh-my-zsh/framework"]
 	path = oh-my-zsh/framework
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule "zsh-git-prompt"]
-	path = oh-my-zsh/custom/plugins/zsh-git-prompt
-	url = https://github.com/viman/zsh-git-prompt.git
-[submodule "plugins/oh-my-custom/zsh-syntax-highlighting"]
-	path = oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "oh-my-zsh/custom/plugins/zsh-autosuggestions"]
-	path = oh-my-zsh/custom/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "plugins/fzf"]
+	path = plugins/fzf
+	url = https://github.com/junegunn/fzf.git
 [submodule "oh-my-zsh/custom/plugins/alias-tips"]
 	path = oh-my-zsh/custom/plugins/alias-tips
 	url = https://github.com/djui/alias-tips
-[submodule "fzf"]
-	path = plugins/fzf
-	url = https://github.com/junegunn/fzf.git
+[submodule "oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+	path = oh-my-zsh/custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
 [submodule "oh-my-zsh/custom/plugins/zsh-command-time"]
 	path = oh-my-zsh/custom/plugins/zsh-command-time
 	url = https://github.com/viman/zsh-command-time.git
+[submodule "oh-my-zsh/custom/plugins/zsh-git-prompt"]
+	path = oh-my-zsh/custom/plugins/zsh-git-prompt
+	url = https://github.com/viman/zsh-git-prompt.git
+[submodule "oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+	path = oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting

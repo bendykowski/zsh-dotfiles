@@ -20,6 +20,7 @@ sudo -v
 
 # Install git submodules
 cd $DOTFILES
+git submodule init
 git submodule update
 
 # Install FuzzyFinder
@@ -27,7 +28,7 @@ $DOTFILES/plugins/fzf/install --key-bindings --completion --no-update-rc
 
 # If prompt executable set as haskell build prompt aplication
 if [[ $GIT_PROMPT_EXECUTABLE = 'haskell' ]]; then
-    cd $DOTFILES/plugins/zsh-git-prompt/src
+    cd $DOTFILES/oh-my-zsh/custom/plugins/zsh-git-prompt/src
     stack setup && stack build && stack install
 fi;
 
