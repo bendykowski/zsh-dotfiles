@@ -1,6 +1,10 @@
 #!/usr/bin/env zsh
 
-export PATH=/usr/local/sbin:$PATH:$DOTFILES/plugins/zsh-git-prompt/src/.bin
+export path=(
+    /usr/local/sbin
+    $path
+    $DOTFILES/plugins/zsh-git-prompt/src/.bin
+)
 
 # Editors
 export EDITOR="nvim"
