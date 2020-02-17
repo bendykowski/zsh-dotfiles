@@ -8,12 +8,15 @@ if ! fgrep -q 'source ~/.zsh/main.zsh' ~/.zshrc; then
   echo "source ~/.zsh/main.zsh" >> ~/.zshrc
 fi;
 
+# Include functions
+source $DOTFILES/functions.zsh
+
 # Include exports
 source $DOTFILES/exports.zsh
 
-# Close any open System Preferences panes, to prevent them from overriding
-# settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
+if [[ $OS == "macos" ]]; then
+    source $DOTFILES/tools/apps
+fi
 
 # Ask for the administrator password upfront
 sudo -v

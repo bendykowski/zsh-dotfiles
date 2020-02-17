@@ -2,6 +2,7 @@
 
 export path=(
     /usr/local/sbin
+    ${HOME}/go/bin
     $path
     $DOTFILES/plugins/zsh-git-prompt/src/.bin
 )
@@ -22,3 +23,6 @@ export ZSH_PLUGINS_ALIAS_TIPS_TEXT="ALIAS TIP: "
 # Command time
 ZSH_COMMAND_TIME_MIN_SECONDS=3
 ZSH_COMMAND_TIME_ECHO=1
+
+# Detect used OS
+OS=$(detect_os)
