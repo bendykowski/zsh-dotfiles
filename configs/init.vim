@@ -1,5 +1,6 @@
 syntax on
 set path+=**
+set clipboard=unnamedplus
 set ruler               " Show the line and column numbers of the cursor.
 set formatoptions+=o    " Continue comment marker in new lines.
 set textwidth=0         " Hard-wrap long lines as you type them.
@@ -40,17 +41,25 @@ set tabstop=4 shiftwidth=4 expandtab
 set gdefault            " Use 'g' flag by default with :s/foo/bar/.
 set magic               " Use 'magic' patterns (extended regular expressions).
 
-" Use <C-L> to clear the highlighting of :set hlsearch.
-if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
-endif
+" Set <leader> key
+nnoremap <Space> <Nop>
+let mapleader = "\<Space>"
+
+" <Leader> mappings
+map <Leader>w <C-w>
+map <Leader>n :NERDTreeToggle<CR>
+map <silent> <Leader>nf :NERDTreeFind<CR>
+map <Leader>r <C-r>
+map <Leader>e <C-e>
+map <Leader>y <C-y>
+map <Leader>b <C-b>
+map <Leader>f <C-f>
+map <Leader>d <C-d>
+map <Leader>u <C-u>
+map <Leader>v <C-v>
 
 " Search and Replace
 nmap <Leader>s :%s//g<Left><Left>
-
-" Leader key is like a command prefix.
-let mapleader='z'
-let maplocalleader='\'
 
 let g:python_host_prog="/usr/local/bin/python2.7"
 
@@ -58,9 +67,8 @@ let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
 let g:session_default_to_last = 1
 
-" set cursorcolumn
-nmap <Space> <PageDown>
-vmap <BS> x
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " cd ~/.config/nvim/spell
 " wget http://ftp.vim.org/vim/runtime/spell/pt.utf-8.spl
@@ -73,16 +81,19 @@ vmap <BS> x
 set nospell
 
 " Plugins here
-call plug#begin('~/.config/nvim/plugged')
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-" Plug 'Shougo/deoplete.nvim'
-Plug 'Valloric/YouCompleteMe'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'Chiel92/vim-autoformat'
-Plug 'scrooloose/nerdtree'
-Plug 'terryma/vim-multiple-cursors'
-call plug#end()
+packadd minpac
+call minpac#init()
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+call minpac#add('SirVer/ultisnips')
+call minpac#add('Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'})
+call minpac#add('Valloric/YouCompleteMe', {'do': '!./install.py --ts-completer'})
+call minpac#add('vim-airline/vim-airline')
+call minpac#add('vim-airline/vim-airline-themes')
+call minpac#add('Chiel92/vim-autoformat')
+call minpac#add('scrooloose/nerdtree')
+call minpac#add('Xuyuanp/nerdtree-git-plugin')
+call minpac#add('terryma/vim-multiple-cursors')
+packloadall
 
 " deoplete config
 let g:deoplete#enable_at_startup = 1
@@ -93,21 +104,12 @@ else
     inoremap <silent><expr><C-@> deoplete#mappings#manual_complete()
 endif
 
-" UltiSnips config
-inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
 " Tell Vim which characters to show for expanded TABs,
 " trailing whitespace, and end-of-lines. VERY useful!
 if &listchars ==# 'eol:$'
   " set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
   set listchars=tab:>\ ,extends:>,precedes:<,nbsp:+
 endif
-
-" nerdtree config
-map <C-n> :NERDTreeToggle<CR>
 
 " airline settings
 let g:airline#extensions#tabline#enabled = 2
@@ -134,24 +136,23 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_min_num_of_chars_for_completion = 1
 
+" NERDTree
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+" Automatically close a tab if the only remaining window is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+nmap <Tab> :bp<CR>
+autocmd FileType nerdtree noremap <buffer> <Tab> <nop>
+
 " Other
 set mouse=
 set list
 
 " Theme
 " colorscheme molokai256
-highlight SignColumn guibg=#272822
-let g:rehash256 = 1
-let g:molokai_original=1
-let NERDTreeIgnore = ['_site']
-
-" Buffer handling
-nmap L :let &number=1-&number<CR>
-nmap <leader>l :bnext<CR>
-nmap <c-h> :bprevious<CR>
-nmap <leader>bq :bp <BAR> bd #<CR>
-nmap <leader>bl :ls<CR>
-nmap <leader>0 :set invnumber<CR>
-" map :q to byffer delete
-" http://stackoverflow.com/questions/7513380/vim-change-x-function-to-delete-buffer-instead-of-save-quit
-cnoreabbrev <expr> q getcmdtype() == ":" && (getcmdline() == 'q' && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) > 1) ? 'bd' : 'q'
+" highlight SignColumn guibg=#272822
+" let g:rehash256 = 1
+" let g:molokai_original=1
+" let NERDTreeIgnore = ['_site']

@@ -9,6 +9,7 @@ export path=(
 
 # Editors
 export EDITOR="nvim"
+export VISUAL="nvim"
 
 # History
 export HISTFILE=$DOTFILES/.zsh_history

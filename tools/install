@@ -30,6 +30,7 @@ git submodule update
 $DOTFILES/plugins/fzf/install --key-bindings --completion --no-update-rc
 
 # If prompt executable set as haskell build prompt aplication
+#
 if [[ $GIT_PROMPT_EXECUTABLE = 'haskell' ]]; then
     cd $DOTFILES/oh-my-zsh/custom/plugins/zsh-git-prompt/src
     stack setup && stack build && stack install
@@ -37,4 +38,5 @@ fi;
 
 # Copy config files to HOME directory
 cp $DOTFILES/configs/vimrc $HOME/.vimrc
+cp $DOTFILES/configs/init.vim $HOME/.config/nvim/init.vim
 cp -R $DOTFILES/configs/vim $HOME/.vim

@@ -22,6 +22,8 @@ fa() {
         print -z $alias
     fi;
 }
+alias vim=nvim
+alias vi=nvim
 
 ########## HISTORY ##########
 alias 'fh?=echo Search history by fuzzy search'
