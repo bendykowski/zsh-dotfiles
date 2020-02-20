@@ -160,6 +160,9 @@ autocmd FileType nerdtree noremap <buffer> <Tab> <nop>
 set mouse=
 set list
 
+nnoremap H ^
+nnoremap L $
+
 " Theme
 " colorscheme molokai256
 " highlight SignColumn guibg=#272822
