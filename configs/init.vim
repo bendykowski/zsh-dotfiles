@@ -4,7 +4,7 @@ set ruler               " Show the line and column numbers of the cursor.
 set formatoptions+=o    " Continue comment marker in new lines.
 set textwidth=0         " Hard-wrap long lines as you type them.
 set modeline            " Enable modeline.
-set relativenumber
+set number relativenumber
 " set esckeys             " Cursor keys in insert mode.
 set linespace=0         " Set line-spacing to minimum.
 set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
