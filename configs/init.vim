@@ -1,7 +1,16 @@
-syntax on
 set nocompatible
+
+syntax on
+filetype on
+filetype plugin on
+filetype indent on
+
 set path+=**
 set clipboard=unnamedplus
+set history=1000
+set wildmenu
+set hidden
+set title
 set ruler               " Show the line and column numbers of the cursor.
 set formatoptions+=o    " Continue comment marker in new lines.
 set textwidth=0         " Hard-wrap long lines as you type them.
