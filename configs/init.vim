@@ -67,6 +67,8 @@ map <Leader>f <C-f>
 map <Leader>d <C-d>
 map <Leader>u <C-u>
 map <Leader>v <C-v>
+map <Leader>h ^
+map <Leader>l $
 
 " Search and Replace
 nmap <Leader>s :%s//g<Left><Left>
@@ -159,9 +161,6 @@ autocmd FileType nerdtree noremap <buffer> <Tab> <nop>
 " Other
 set mouse=
 set list
-
-nnoremap H ^
-nnoremap L $
 
 " Theme
 " colorscheme molokai256
