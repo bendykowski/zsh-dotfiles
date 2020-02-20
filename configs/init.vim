@@ -1,4 +1,5 @@
 syntax on
+set nocompatible
 set path+=**
 set clipboard=unnamedplus
 set ruler               " Show the line and column numbers of the cursor.
