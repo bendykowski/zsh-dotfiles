@@ -58,8 +58,6 @@ let mapleader = "\<Space>"
 
 " <Leader> mappings
 map <Leader>w <C-w>
-nnoremap <Leader>nt :NERDTreeToggle<Enter>
-nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 nmap <leader>pf :CtrlP<CR>
 map <Leader>r <C-r>
 map <Leader>e <C-e>
@@ -109,7 +107,6 @@ let g:session_autoload = 'yes'
 let g:session_default_to_last = 1
 
 autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 set spell spelllang=pl,en
 " set nospell
@@ -128,11 +125,6 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
     Plug 'mads-hartmann/bash-language-server'
-
-    " {{{ NERDTree Section }}}
-    Plug 'scrooloose/nerdtree'
-    Plug 'ryanoasis/vim-devicons'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
 
     " {{{ Tools }}}
     Plug 'Chiel92/vim-autoformat'
@@ -211,16 +203,6 @@ let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_next_key='<C-e>'
 let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_quit_key='<Esc>'
-
-" NERDTree
-let NERDTreeQuitOnOpen = 1
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-" Automatically close a tab if the only remaining window is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-nmap <Tab> :bp<CR>
-autocmd FileType nerdtree noremap <buffer> <Tab> <nop>
 
 " Other
 set mouse=a
@@ -439,3 +421,22 @@ command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+" Explorer
+let g:coc_explorer_global_presets = {
+\   'floating': {
+\      'position': 'floating',
+\      'floating-width': 100,
+\      'floating-position': 'center'
+\   }
+\ }
+nmap <space>e :CocCommand explorer<CR>
+nmap <space>f :CocCommand explorer --preset floating<CR>
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+
+" Netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 20
