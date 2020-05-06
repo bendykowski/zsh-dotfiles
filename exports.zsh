@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 export path=(
+    /usr/local/opt/llvm/bin
     /usr/local/sbin
     ${HOME}/go/bin
     $path
@@ -27,3 +28,6 @@ ZSH_COMMAND_TIME_ECHO=1
 
 # Detect used OS
 OS=$(detect_os)
+
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
